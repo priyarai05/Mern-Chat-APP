@@ -12,7 +12,7 @@ import ScrollableChats from './ScrollableChats';
 import Lottie from 'react-lottie';
 import animationData from '../animation/typing.json'
 
-const ENDPOINT = 'http://localhost:8000' //'https://talk-a-tive-q8dh.onrender.com';
+const ENDPOINT = 'https://talk-a-tive-q8dh.onrender.com';
 var socket, selectedChatCompare;
 
 function SingleChat({ fetchAgain, setFetchAgain }) {
