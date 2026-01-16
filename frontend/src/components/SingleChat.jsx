@@ -83,10 +83,13 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
                 setFetchAgain(!fetchAgain)
             }
         }else{
-            setMessages([...messages, newMessageReceived])
+            setMessages((prev) => [...prev, newMessageReceived]);
         }
-     }) 
-    })
+     })
+     return () => {
+        socket.off("message received");
+    }; 
+    },[])
     
     const sendMessage = async(event) => {
         if(event.key === "Enter" && newMessage){
@@ -104,7 +107,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
                 }, config)
                 setNewMessage("");
                 socket.emit("new message",data)
-                setMessages([...messages, data])
+                setMessages((prev) => [...prev, data]);
             } catch (error) {
                 toast({
                     title: "Error Occured!",
